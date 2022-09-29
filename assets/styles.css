@@ -1,0 +1,111 @@
+*{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+html{
+  background-color: #ffd;
+}
+
+ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#app > ul {
+  display: flex;
+  flex-flow: wrap;
+}
+
+#app{
+  display: flex;
+}
+
+.taskGroup{
+  border: solid 1px black;
+  border-radius: 5px;
+  background-color: #fefefe;
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 400px;
+  box-shadow: 2px 3px 5px #ddd;
+}
+
+.task{
+  border: solid 1px black;
+  border-radius: 5px;
+  margin: 5px 10px;
+  font-size: 10px;
+  display: flex;
+  position: relative;
+}
+
+.deadline{
+  align-self: flex-end;
+  margin: 1px 0 1px 5px;
+}
+
+.deadline:hover, h3:hover{
+  cursor:pointer;
+  opacity: 0.7;
+}
+
+h2{
+  margin: 5px;
+  text-align: center;
+}
+
+h3{
+  margin: 1px 5px;
+}
+
+button{
+  margin: 5px;
+}
+
+input:hover{
+  cursor: pointer;
+}
+
+input[type=text]{
+  margin:5px;
+}
+
+.task select{
+  border-radius: 50%;
+  height: 25px;
+  width: 25px;
+  margin: 0 5px;
+  color: transparent;
+}
+
+.colorTask{
+  position:absolute;
+  right: 25px;
+  top: 2px;
+  color: transparent;
+  cursor: pointer;
+}
+
+.lineTrough{
+  text-decoration: line-through;
+}
+
+.deleteButton{
+  color: #e00;
+  font-size: 12px;
+  font-weight: bold;
+  position: absolute;
+  right: 5px;
+  top: 2px;
+}
+
+.deleteButton:hover{
+  opacity: 0.7;
+  cursor: pointer;
+  text-shadow: 0px 0px 1px black;
+}
+
