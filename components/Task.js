@@ -23,7 +23,7 @@ app.component('task',{
     </div>`,
     methods: {
         editTitle(){
-            
+            //TODO
         },
         deleteTask(){
             this.$emit('delete-task',this.task.id);

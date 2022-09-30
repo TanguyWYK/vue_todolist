@@ -11,9 +11,9 @@ app.component('empty-task',{
     },
     template:
     /*html*/
-    `<div class="task">    
+    `<div class="task emptyTask">    
         <form @submit.prevent="onSubmit">
-            <input type="text" v-model.lazy="task.title" required placeholder="nouvelle tâche">
+            <input type="text" v-model="task.title" required placeholder="nouvelle tâche">
             <input type="date" class="deadline" v-model.lazy="task.deadline" required>
             <select v-model.number="task.color" required :style="{backgroundColor: task.color}">
             <option value="${COLORS[0]}" :style="{backgroundColor: '${COLORS[0]}'}"></option>

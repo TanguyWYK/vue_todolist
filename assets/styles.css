@@ -2,7 +2,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-html{
+body{
   background-color: #ffd;
 }
 
@@ -32,6 +32,7 @@ ul{
   position: relative;
   width: 400px;
   box-shadow: 2px 3px 5px #ddd;
+  overflow: hidden;
 }
 
 .task{
@@ -41,6 +42,12 @@ ul{
   font-size: 10px;
   display: flex;
   position: relative;
+  overflow: hidden;
+  height: 32px;
+}
+
+.emptyTask{
+  height: 64px;
 }
 
 .deadline{

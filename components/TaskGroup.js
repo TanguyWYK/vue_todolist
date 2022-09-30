@@ -5,13 +5,20 @@ app.component("task-group", {
       required: true,
     },
   },
+  mounted() {
+    for (let taskIndex in this.taskGroup.tasks) {
+      this.showTask(this.taskGroup.tasks[taskIndex]);
+    }
+  },
   template:
     /*html*/
     `<div class="taskGroup">
         <h2>{{ taskGroup.title }}</h2>
         <ul>
             <li v-for="task in taskGroup.tasks" :key="task.id" >
-                <task :task="task" @delete-task="deleteTask"></task>
+                <transition appear name="showTask">
+                  <task v-if="task.show" :task="task" @delete-task="deleteTask"></task>
+                </transition>
             </li>
             <li>
                 <empty-task @create-task="createTask"></empty-task>
@@ -21,17 +28,26 @@ app.component("task-group", {
     </div>`,
   methods: {
     createTask(task) {
-      Storage.createTask(task,this.taskGroup.id).then((id) => {
+      Storage.createTask(task, this.taskGroup.id).then((id) => {
         task.id = id;
         this.taskGroup.tasks.push(task);
+        this.showTask(task);
       });
     },
     deleteTask(id) {
       let index = this.taskGroup.tasks.findIndex((task) => task.id === id);
-      this.taskGroup.tasks.splice(index, 1);
+      Storage.deleteTask(id, this.taskGroup.id).then(() => {
+        this.taskGroup.tasks[index].show = false;
+        setTimeout(() => {
+          this.taskGroup.tasks.splice(index, 1);
+        }, 500);
+      });
     },
     deleteTaskGroup() {
       this.$emit("delete-task-group", this.taskGroup.id);
+    },
+    showTask(task) {
+      task.show = true;
     },
   },
 });
